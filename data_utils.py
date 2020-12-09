@@ -20,12 +20,14 @@ pos_test = os.path.join(POS_DIR, "test")
 vocab_path = os.path.join(WORDS_DIR, "vocab.txt")
 wv_path = os.path.join(WORDS_DIR, "wordVectors.txt")
 
+
 def get_pos_name_by_index(index):
-    for k, v in POS_TAGS.iteritems():
+    for k, v in POS_TAGS.items():
         if v == index:
             return k
     print('error: no pos value found for index %s' %index)
     return ''
+
 
 def get_pos_tag_vector(pos_value):
     # y = np.zeros(len(POS_TAGS), dtype=int)

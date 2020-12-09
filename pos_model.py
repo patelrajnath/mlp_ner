@@ -22,7 +22,7 @@ def main():
     print('pre-trained embeddings is set to %s' % PRETRAIN_EMBEDDINGS)
     print('sub-words embeddings is set to %s' % USE_SUBWORDS)
 
-    EPOCHS_TO_TRAIN = 100
+    EPOCHS_TO_TRAIN = 10
     CONTEXT_SIZE = 5
     BATCH_SIZE = 1000
     WORKERS = 2
@@ -80,7 +80,8 @@ def main():
     test_data_loader = data_utils.prepare_tensor_dataset(data_utils.pos_test, vocab, WORKERS, BATCH_SIZE, include_y=False)
 
     criterion = nn.NLLLoss()
-    optimizer = optim.SGD(filter(lambda p: p.requires_grad, net.parameters()), lr=0.01)
+    # optimizer = optim.SGD(filter(lambda p: p.requires_grad, net.parameters()), lr=0.01)
+    optimizer = optim.Adam(filter(lambda p: p.requires_grad, net.parameters()), lr=0.01)
     dev_losses = []
     train_losses = []
     acceptances = []
